@@ -76,7 +76,7 @@
     }
 
     .nav-links {
-      display: flex;
+      display: none;
       gap: 36px;
       list-style: none;
     }
@@ -420,7 +420,7 @@
 
       #hero {
         height: auto;
-        min-height: 520px;
+        min-height: 85vh;
         aspect-ratio: 3 / 4;
         align-items: flex-end;
         padding-top: 80px;
@@ -483,8 +483,43 @@
     }
 
     /* ── HAMBURGER / MOBILE MENU ── */
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.6);
+      padding: 10px 24px;
+      border-radius: 3px;
+      transition: background 0.25s, border-color 0.25s, color 0.25s;
+    }
+
+    .nav-cta:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: #fff;
+    }
+
+    nav.scrolled .nav-cta {
+      color: var(--navy);
+      border-color: var(--navy);
+    }
+
+    nav.scrolled .nav-cta:hover {
+      background: var(--navy);
+      color: #fff;
+    }
+
     .hamburger {
-      display: none;
+      display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 5px;
@@ -548,11 +583,8 @@
     }
 
     @media (max-width: 768px) {
-      .nav-links {
+      .nav-cta {
         display: none;
-      }
-      .hamburger {
-        display: flex;
       }
     }
 
@@ -575,9 +607,12 @@
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Get in touch</a></li>
     </ul>
-    <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-right">
+      <a href="/apply" class="nav-cta">Apply</a>
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- ── HERO ── -->
