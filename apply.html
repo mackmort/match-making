@@ -494,26 +494,28 @@
     onScroll();
 
     // Capture name/email from Cal.com booking and unlock form
-    window.addEventListener('message', function (e) {
-      if (e.origin !== 'https://app.cal.com') return;
-      try {
-        var data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
-        if (data.action === 'bookingSuccessful' && data.data) {
-          var booking = data.data;
-          if (booking.name) document.getElementById('name').value = booking.name;
-          if (booking.email) document.getElementById('email').value = booking.email;
+    Cal("on", {
+      action: "bookingSuccessfulV2",
+      callback: function (e) {
+        var booking = e.detail.data;
 
-          // Unlock the form
-          var form = document.getElementById('intake-form');
-          var msg = document.getElementById('form-locked-message');
-          form.classList.remove('form-locked');
-          msg.style.display = 'none';
-
-          // Scroll to the form
-          var section = document.getElementById('questions-section');
-          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Capture attendee name/email
+        if (booking.attendees && booking.attendees.length > 0) {
+          var attendee = booking.attendees[0];
+          if (attendee.name) document.getElementById('name').value = attendee.name;
+          if (attendee.email) document.getElementById('email').value = attendee.email;
         }
-      } catch (err) {}
+
+        // Unlock the form
+        var form = document.getElementById('intake-form');
+        var msg = document.getElementById('form-locked-message');
+        form.classList.remove('form-locked');
+        msg.style.display = 'none';
+
+        // Scroll to the form
+        var section = document.getElementById('questions-section');
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
 
     // Form submission handler
