@@ -173,6 +173,52 @@
       overflow: hidden;
     }
 
+    /* Collapsed state after booking */
+    .cal-section-booked .cal-embed-wrapper {
+      display: none;
+    }
+
+    .cal-section-booked .section-intro {
+      margin-bottom: 0;
+    }
+
+    .booking-confirmed {
+      display: none;
+      background: #fff;
+      border-radius: 6px;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .booking-confirmed .confirmed-check {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #e8f5e9;
+      line-height: 40px;
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .booking-confirmed p {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .booking-confirmed .confirmed-detail {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--body-text);
+      opacity: 0.7;
+    }
+
+    .cal-section-booked .booking-confirmed {
+      display: block;
+    }
+
     .cal-placeholder {
       display: flex;
       align-items: center;
@@ -372,14 +418,19 @@
   </div>
 
   <!-- ── SCHEDULE INTRO CALL ── -->
-  <section class="apply-section alt-bg">
+  <section class="apply-section alt-bg" id="cal-section">
     <div class="apply-inner">
       <p class="section-label">Step one</p>
       <h2 class="section-heading">Schedule your intro call</h2>
       <p class="section-intro">Choose a time that works for you. This is a brief, complimentary conversation so we can get a sense of each other.</p>
 
-      <!-- Cal.com inline embed — replace YOUR_CAL_LINK with your Cal.com event slug -->
       <div class="cal-embed-wrapper" id="cal-embed"></div>
+
+      <div class="booking-confirmed" id="booking-confirmed">
+        <div class="confirmed-check">&#10003;</div>
+        <p>Intro call scheduled</p>
+        <p class="confirmed-detail" id="booking-detail"></p>
+      </div>
     </div>
   </section>
 
@@ -506,15 +557,30 @@
           if (attendee.email) document.getElementById('email').value = attendee.email;
         }
 
+        // Show booking detail
+        if (booking.startTime) {
+          var date = new Date(booking.startTime);
+          var detail = document.getElementById('booking-detail');
+          detail.textContent = date.toLocaleDateString('en-US', {
+            weekday: 'long', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit'
+          });
+        }
+
+        // Collapse Cal.com section to compact confirmation
+        var calSection = document.getElementById('cal-section');
+        calSection.classList.add('cal-section-booked');
+
         // Unlock the form
         var form = document.getElementById('intake-form');
         var msg = document.getElementById('form-locked-message');
         form.classList.remove('form-locked');
         msg.style.display = 'none';
 
-        // Scroll to the form
-        var section = document.getElementById('questions-section');
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Scroll to the form after a delay (Cal.com auto-scrolls on confirmation)
+        setTimeout(function () {
+          var section = document.getElementById('questions-section');
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 600);
       }
     });
 
