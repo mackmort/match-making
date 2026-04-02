@@ -1,5 +1,44 @@
 # Progress Log
 
+## 2026-04-02 — Application Page (Intake Form + Scheduling)
+
+### Architecture Decisions
+- Created a separate `/apply` page (new `apply.html`) for the application flow
+- **Cal.com free tier** for intro call scheduling — embedded inline widget connected to `kenziemortonmatchmaking@gmail.com` (dedicated Gmail for calendar)
+- **Netlify Forms** for intake questionnaire delivery — submissions emailed to kenzie@kenziemorton.com
+- Scheduling first, then questions — maximizes conversion (low-friction booking first)
+
+### What Was Built
+1. **`apply.html`** — Two-step application page:
+   - Step 1: Cal.com embedded scheduling widget (`kenzie-morton-matchmaking/15min`)
+   - Step 2: 10-question intake questionnaire (all textareas, long-form)
+   - Form is locked until Cal.com booking is confirmed
+   - After booking, Cal.com widget collapses to compact confirmation with date/time
+   - Page auto-scrolls to questionnaire after booking
+   - Name/email captured from Cal.com booking event as hidden fields (no duplicate entry)
+   - Honeypot spam protection on the form
+   - Success message after form submission
+2. **`index.html`** — Updated CTAs across the site:
+   - Hero CTA: "Get in touch" → "Apply" → links to `/apply`
+   - Nav "Application" link → `/apply`
+   - Mobile menu "Application" link → `/apply`
+   - Contact section: "Apply" as primary CTA, email as secondary
+
+### Post-Deploy Setup (Client)
+- [ ] Configure Netlify form notification email (Netlify dashboard → Forms → application → Notifications → add kenzie@kenziemorton.com)
+- [ ] Change Cal.com slot interval from 15 min to 30+ min (Cal.com → Event Type → Advanced)
+- [ ] Optionally remove "Additional notes" from Cal.com booking questions
+
+### PRs
+- #2 — Add application page with Cal.com scheduling + intake form
+- #3 — Fix Cal.com booking event detection (switched from postMessage to Cal.com embed event API)
+- #4 — Collapse Cal.com widget after booking, fix scroll behavior
+
+### Key Technical Notes
+- Cal.com's embed uses its own event API (`Cal("on", { action: "bookingSuccessfulV2" })`) — not raw `postMessage`
+- Cal.com confirmation emails come from the connected calendar's email address, not a custom domain — this is an industry-wide limitation
+- Form lock is CSS-only (`pointer-events: none`); not a security boundary, just UX guidance
+
 ## 2026-04-02 — Hosting Setup (GitHub + Netlify + Custom Domain)
 
 ### Accounts & Ownership
