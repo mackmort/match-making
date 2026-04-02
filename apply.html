@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apply — Kenzie Morton Matchmaking</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #F7F9FB;
+      --navy: #1F2A36;
+      --navy-deep: #2F3F4A;
+      --blue-grey: #AEBFCB;
+      --body-text: #1F2326;
+      --earth: #8A5A3C;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--body-text);
+      font-family: var(--sans);
+      font-size: 18px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 103;
+      padding: 24px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--navy);
+      transition: background 0.35s ease, padding 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(247, 249, 251, 0.97);
+      backdrop-filter: blur(8px);
+      padding: 16px 48px;
+      box-shadow: 0 1px 0 rgba(31, 42, 54, 0.07);
+    }
+
+    .nav-brand {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav.scrolled .nav-brand {
+      color: var(--navy);
+    }
+
+    .nav-back {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      transition: color 0.3s, opacity 0.3s;
+    }
+
+    .nav-back:hover {
+      color: #fff;
+    }
+
+    nav.scrolled .nav-back {
+      color: var(--navy);
+      opacity: 0.7;
+    }
+
+    nav.scrolled .nav-back:hover {
+      opacity: 1;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 140px 48px 80px;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 300;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: 0.01em;
+    }
+
+    .page-header p {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--body-text);
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── SECTIONS ── */
+    .apply-section {
+      padding: 80px 48px;
+    }
+
+    .apply-section.alt-bg {
+      background: #fff;
+    }
+
+    .apply-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue-grey);
+      margin-bottom: 40px;
+    }
+
+    h2.section-heading {
+      font-family: var(--serif);
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 16px;
+      letter-spacing: 0.01em;
+    }
+
+    .section-intro {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--body-text);
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    /* ── CAL.COM EMBED ── */
+    .cal-embed-wrapper {
+      min-height: 500px;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .cal-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 500px;
+      background: #fff;
+      border: 1px dashed var(--blue-grey);
+      border-radius: 6px;
+      color: var(--blue-grey);
+      font-size: 15px;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── FORM LOCKED STATE ── */
+    .form-locked {
+      position: relative;
+      pointer-events: none;
+      opacity: 0.4;
+      user-select: none;
+    }
+
+    .form-locked-message {
+      text-align: center;
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--blue-grey);
+      letter-spacing: 0.02em;
+      margin-bottom: 40px;
+    }
+
+    /* ── FORM ── */
+    .form-group {
+      margin-bottom: 48px;
+    }
+
+    .form-group:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .form-group label {
+      display: block;
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--body-text);
+      background: #fff;
+      border: 1px solid rgba(174, 191, 203, 0.5);
+      border-radius: 4px;
+      padding: 14px 18px;
+      line-height: 1.6;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--navy);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--blue-grey);
+      font-weight: 300;
+    }
+
+    .form-group textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .btn-submit {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--navy);
+      border: 1px solid var(--navy);
+      padding: 16px 40px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+      margin-top: 48px;
+    }
+
+    .btn-submit:hover {
+      background: var(--navy-deep);
+      border-color: var(--navy-deep);
+    }
+
+    /* ── SUCCESS STATE ── */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 60px 0;
+    }
+
+    .form-success h3 {
+      font-family: var(--serif);
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+
+    .form-success p {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--body-text);
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-deep);
+      padding: 32px 48px;
+      text-align: center;
+    }
+
+    footer p {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.28);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 20px 24px;
+      }
+
+      .nav-brand {
+        font-size: 15px;
+      }
+
+      .page-header {
+        padding: 120px 28px 60px;
+      }
+
+      .apply-section {
+        padding: 60px 28px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .btn-submit {
+        width: 100%;
+        text-align: center;
+      }
+
+      footer {
+        padding: 28px 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="/" class="nav-brand">Kenzie Morton Matchmaking</a>
+    <a href="/" class="nav-back">Back to home</a>
+  </nav>
+
+  <!-- ── PAGE HEADER ── -->
+  <div class="page-header">
+    <h1>Apply</h1>
+    <p>I would love to learn more about you. Start by scheduling a complimentary intro call, then take your time with the questions below.</p>
+  </div>
+
+  <!-- ── SCHEDULE INTRO CALL ── -->
+  <section class="apply-section alt-bg">
+    <div class="apply-inner">
+      <p class="section-label">Step one</p>
+      <h2 class="section-heading">Schedule your intro call</h2>
+      <p class="section-intro">Choose a time that works for you. This is a brief, complimentary conversation so we can get a sense of each other.</p>
+
+      <!-- Cal.com inline embed — replace YOUR_CAL_LINK with your Cal.com event slug -->
+      <div class="cal-embed-wrapper" id="cal-embed"></div>
+    </div>
+  </section>
+
+  <!-- ── INTAKE QUESTIONS ── -->
+  <section class="apply-section" id="questions-section">
+    <div class="apply-inner">
+      <p class="section-label">Step two</p>
+      <h2 class="section-heading">Tell me about you</h2>
+      <p class="section-intro">There are no right answers here. Take your time and share what feels true.</p>
+
+      <p class="form-locked-message" id="form-locked-message">Please schedule your intro call above to unlock this section.</p>
+
+      <form id="intake-form" class="form-locked" name="application" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="application" />
+        <p style="display:none"><input name="bot-field" /></p>
+        <input type="hidden" id="name" name="name" value="" />
+        <input type="hidden" id="email" name="email" value="" />
+
+        <div class="form-group">
+          <label for="q1">Tell me a bit about yourself. Who you are, what you do, and what matters to you in your daily life.</label>
+          <textarea id="q1" name="about_yourself" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="q2">What does your life feel like right now? What feels full, what you'd like to cultivate, and what's been on your mind lately.</label>
+          <textarea id="q2" name="life_right_now" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="q3">What does a really good, nourishing day look like for you?</label>
+          <textarea id="q3" name="good_day" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="q4">How would you describe the way you relate to people more generally? And what do you feel you contribute to the people close to you?</label>
+          <textarea id="q4" name="relating_to_people" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="q5">What has your dating life looked like recently, and what brought you here?</label>
+          <textarea id="q5" name="dating_life" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="q6">What kind of partnership are you looking for? How do you want to feel in it?</label>
+          <textarea id="q6" name="partnership" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="q7">What tends to feel more challenging for you in intimate dynamics?</label>
+          <textarea id="q7" name="challenges" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="q8">What qualities draw you to someone? And what have you learned doesn't work for you?</label>
+          <textarea id="q8" name="qualities" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="q9">When connection feels good to you, what does it actually feel like?</label>
+          <textarea id="q9" name="good_connection" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="q10">Anything else you'd want me to understand about you as I get to know you?</label>
+          <textarea id="q10" name="anything_else"></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Submit application</button>
+      </form>
+
+      <div class="form-success" id="form-success">
+        <h3>Thank you</h3>
+        <p>Your application has been received. I will review your responses before our intro call. I look forward to getting to know you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>&copy; 2026 Kenzie Morton Matchmaking</p>
+  </footer>
+
+  <!-- ── SCRIPTS ── -->
+
+  <script type="text/javascript">
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", {origin:"https://app.cal.com"});
+    Cal("inline", {
+      elementOrSelector: "#cal-embed",
+      calLink: "kenzie-morton-matchmaking/15min",
+      layout: "month_view"
+    });
+    Cal("ui", {
+      styles: { branding: { brandColor: "#1F2A36" } },
+      hideEventTypeDetails: true,
+      layout: "month_view"
+    });
+  </script>
+
+  <script>
+    // Sticky nav scroll behavior
+    const nav = document.querySelector('nav');
+    const onScroll = () => {
+      if (window.scrollY > 60) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Capture name/email from Cal.com booking and unlock form
+    window.addEventListener('message', function (e) {
+      if (e.origin !== 'https://app.cal.com') return;
+      try {
+        var data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+        if (data.action === 'bookingSuccessful' && data.data) {
+          var booking = data.data;
+          if (booking.name) document.getElementById('name').value = booking.name;
+          if (booking.email) document.getElementById('email').value = booking.email;
+
+          // Unlock the form
+          var form = document.getElementById('intake-form');
+          var msg = document.getElementById('form-locked-message');
+          form.classList.remove('form-locked');
+          msg.style.display = 'none';
+
+          // Scroll to the form
+          var section = document.getElementById('questions-section');
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } catch (err) {}
+    });
+
+    // Form submission handler
+    const form = document.getElementById('intake-form');
+    const success = document.getElementById('form-success');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      })
+      .then(function () {
+        form.style.display = 'none';
+        success.style.display = 'block';
+        window.scrollTo({ top: success.offsetTop - 120, behavior: 'smooth' });
+      })
+      .catch(function () {
+        alert('Something went wrong. Please try again or email kenzie@kenziemorton.com directly.');
+      });
+    });
+  </script>
+
+</body>
+</html>
