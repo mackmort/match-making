@@ -14,9 +14,19 @@ Static single-page marketing website for **Kenzie Morton Matchmaking**. The enti
 - Sections in order: Nav, Hero, Process, Details, About, Contact, Footer, Mobile Menu.
 - JS (lines 669–718): hamburger menu toggle, sticky nav on scroll, IntersectionObserver scroll-reveal.
 
+## Hosting & Deployment
+
+- **Hosted on Netlify** at `kenziemorton.com` (and `www.kenziemorton.com`)
+- **Repo**: `mackmort/match-making` on GitHub (private, client-owned)
+- **Auto-deploy**: every push to `main` triggers a Netlify deploy — no build command, no manual steps
+- **Domain DNS**: managed in Namecheap
+- **SSL**: Let's Encrypt via Netlify, auto-renewing
+
 ## Development
 
-To preview: open `index.html` directly in a browser, or use any static file server (e.g., `python3 -m http.server`).
+To preview locally: open `index.html` directly in a browser, or use any static file server (e.g., `python3 -m http.server`).
+
+To deploy: push to `main` on `mackmort/match-making`. Netlify picks it up automatically.
 
 No tests, linting, or build steps exist.
 

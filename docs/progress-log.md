@@ -1,5 +1,32 @@
 # Progress Log
 
+## 2026-04-02 — Hosting Setup (GitHub + Netlify + Custom Domain)
+
+### Accounts & Ownership
+- Client (mackmort) owns both the **GitHub** and **Netlify** accounts
+- Nicholas added as a **collaborator** on GitHub repo `mackmort/match-making`
+- No Netlify collaborator needed — deploys are automatic from GitHub pushes
+
+### Repository
+- Initialized git repo locally and pushed to `mackmort/match-making` (private)
+- Branch: `main`
+- Initial commit includes `index.html`, `CLAUDE.md`, and `docs/`
+
+### Netlify Deployment
+- Connected Netlify to GitHub repo via "Sign up with GitHub"
+- No build command, publish directory is `/`
+- Auto-deploys on every push to `main`
+- Netlify subdomain: `dancing-kangaroo-9a1468.netlify.app`
+
+### Custom Domain (kenziemorton.com)
+- Added `kenziemorton.com` as primary domain and `www.kenziemorton.com` as redirect alias
+- DNS configured in Namecheap, SSL provisioned via Let's Encrypt
+- Client's email (`kenzie@kenziemorton.com`) confirmed still working
+
+### Workflow Going Forward
+- Push changes to `main` on GitHub → Netlify auto-deploys to `kenziemorton.com`
+- No manual deployment steps needed
+
 ## 2026-04-01 — Mobile Responsiveness & Cleanup
 
 ### Hosting Decision
