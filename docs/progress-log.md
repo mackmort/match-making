@@ -1,5 +1,19 @@
 # Progress Log
 
+## 2026-04-14 — Hero, Desktop Nav, Footer Updates
+
+### What Changed
+1. **Hero tagline** — Added "in Mexico City" to the main description: *"A more thoughtful, personal approach to meeting people in Mexico City through carefully curated introductions."*
+2. **Desktop nav links** — Added `@media (min-width: 769px)` media query to show `.nav-links` with `display: flex`. Links (Process, Application, About, Get in touch) are now visible on desktop without opening the hamburger menu. Existing link styles and scrolled-state colors already handled both states.
+3. **Footer expansion** — Replaced copyright-only footer with email link (`kenzie@kenziemorton.com`), "Based in Mexico City", and copyright. Added subtle hover styles for the email link.
+
+### PRs
+- #9 — ui(homepage): add Mexico City, desktop nav links, expanded footer
+
+### Notes
+- Changes driven by feedback from five external reviewers (see `website-proposal.md`)
+- Items 6, 7, 8 from the proposal — all marked ✅ (no client input needed)
+
 ## 2026-04-02 — Application Page (Intake Form + Scheduling)
 
 ### Architecture Decisions
