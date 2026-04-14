@@ -1,5 +1,20 @@
 # Progress Log
 
+## 2026-04-14 — Simplify Apply Page to Booking-Only
+
+### What Changed
+1. **Removed intake questionnaire from apply page** — The 10-question form, form-locked state, Netlify Forms submission, and all related CSS/JS removed from `apply.html` (613 → 353 lines)
+2. **Apply page is now booking-only** — Cal.com scheduling embed + booking confirmation banner. No more two-step flow.
+3. **Homepage copy updated** — Process section: "short application" → "brief intro call"; Contact section: "Start with an application" → "Start by scheduling an intro call". Collapsed redundant call/coffee paragraph.
+4. **Intake questions preserved** — Saved to `docs/intake-questions.md` for Kenzie's email template
+
+### New Flow
+- Prospective client visits site → hits Apply → schedules intro call (calendar invite sent automatically)
+- Kenzie sends custom email with reflection questions before the call
+
+### PRs
+- #10 — Simplify apply page to booking-only flow
+
 ## 2026-04-14 — Hero, Desktop Nav, Footer Updates
 
 ### What Changed
