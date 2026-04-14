@@ -1,5 +1,14 @@
 # Progress Log
 
+## 2026-04-14 — Update Hero Copy
+
+### What Changed
+1. **Revised hero tagline** — Removed "in Mexico City" from the main description, now reads: *"A more thoughtful, personal approach to meeting people through carefully curated introductions."*
+2. **Split into three paragraphs** — Each sentence is its own `<p>`: the tagline, "I work with a small number of clients at a time.", and "Based in Mexico City."
+3. **Adjusted paragraph spacing** — Tightened gap between hero paragraphs (10px) so they read as a cohesive block, with the original 36px margin only before the Apply button
+
+---
+
 ## 2026-04-14 — Add USD Labels & MXN Payment Note to Pricing
 
 ### What Changed
