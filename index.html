@@ -401,6 +401,23 @@
       color: rgba(255, 255, 255, 0.28);
     }
 
+    footer a {
+      color: rgba(255, 255, 255, 0.28);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* ── DESKTOP NAV ── */
+    @media (min-width: 769px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+
     /* ── MOBILE ── */
     @media (max-width: 768px) {
       nav {
@@ -627,7 +644,7 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>Kenzie Morton<br />Matchmaking</h1>
-      <p>A more thoughtful, personal approach to meeting people through carefully curated introductions.</p>
+      <p>A more thoughtful, personal approach to meeting people in Mexico City through carefully curated introductions.</p>
       <p class="hero-subtext">I work with a small number of clients at a time.</p>
       <a href="/apply" class="btn-hero">Apply</a>
     </div>
@@ -709,6 +726,8 @@
 
   <!-- ── FOOTER ── -->
   <footer>
+    <p><a href="mailto:kenzie@kenziemorton.com">kenzie@kenziemorton.com</a></p>
+    <p>Based in Mexico City</p>
     <p>&copy; 2026 Kenzie Morton Matchmaking</p>
   </footer>
 
