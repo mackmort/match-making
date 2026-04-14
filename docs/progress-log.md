@@ -1,5 +1,19 @@
 # Progress Log
 
+## 2026-04-14 — Add Testimonials to About Page
+
+### What Changed
+1. **New testimonials section on `/about`** — "In Their Words" section with 3 client quotes, placed between the bio text and footer
+2. **Styling** — Italic serif (Cormorant Garamond) blockquotes on a white background to visually separate from the bio section above. Attribution in small sans-serif with blue-grey color. Responsive mobile padding.
+
+### Quotes
+- D.J.S, Mexico City — on Kenzie's intuitive gift and genuine curiosity
+- J, Mexico City — on feeling empowered and Kenzie's effortless connecting
+- Anonymous, Mexico City — on genuine care and presence
+
+### PRs
+- #14 — feat(about): add testimonials section
+
 ## 2026-04-14 — Move About to Its Own Page
 
 ### What Changed
