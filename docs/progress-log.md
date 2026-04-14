@@ -1,5 +1,19 @@
 # Progress Log
 
+## 2026-04-14 — Cal.com Embed Layout (Column View)
+
+### What Changed
+1. **Attempted to switch Cal.com embed from month view to column view** — passed `layout=column_view` as query param on calLink URL and as embed config property
+2. **Cal.com dashboard updated** — set Column as default view, unchecked Month layout
+
+### Result
+- Cal.com ignores the embed layout parameter entirely — the widget still renders as month view
+- **Cal.com free tier limitation** — compact/column layout for inline embeds likely requires a paid plan
+- Code change is deployed but has no visible effect; harmless to leave in place
+
+### PRs
+- #11 — Switch Cal.com embed to compact column view
+
 ## 2026-04-14 — Simplify Apply Page to Booking-Only
 
 ### What Changed
