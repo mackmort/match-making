@@ -1,5 +1,16 @@
 # Progress Log
 
+## 2026-04-14 — Move About to Its Own Page
+
+### What Changed
+1. **New `/about.html`** — Dedicated About page with the full 6-paragraph About copy. Uses the same nav as the homepage (brand, Process, Application, About, Get in touch, Apply CTA, hamburger) and identical footer (email, "Based in Mexico City", copyright). Nav links to homepage sections use `/#process` and `/#contact` so they resolve from any page.
+2. **Homepage About section shortened** — Replaced the 6-paragraph body with a 4-sentence blurb focused on Kenzie's relational/therapeutic background and genuine care. Added an earth-colored "Learn more about Kenzie →" link pointing to `/about`.
+3. **Nav links updated** — All `href="#about"` references (desktop nav + mobile menu) now point to `/about` instead of the homepage anchor.
+
+### Rationale
+- Gives the About story a proper home with room to breathe while keeping the homepage tight
+- Homepage now previews who Kenzie is in a few sentences, inviting deeper exploration
+
 ## 2026-04-14 — Cal.com Embed Layout (Column View)
 
 ### What Changed

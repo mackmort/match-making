@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Kenzie Morton Matchmaking</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #F7F9FB;
+      --navy: #1F2A36;
+      --navy-deep: #2F3F4A;
+      --blue-grey: #AEBFCB;
+      --body-text: #1F2326;
+      --earth: #8A5A3C;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--body-text);
+      font-family: var(--sans);
+      font-size: 18px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 103;
+      padding: 24px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--navy);
+      transition: background 0.35s ease, padding 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(247, 249, 251, 0.97);
+      backdrop-filter: blur(8px);
+      padding: 16px 48px;
+      box-shadow: 0 1px 0 rgba(31, 42, 54, 0.07);
+    }
+
+    .nav-brand {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav.scrolled .nav-brand {
+      color: var(--navy);
+    }
+
+    .nav-links {
+      display: none;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      transition: color 0.3s, opacity 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+      opacity: 1;
+    }
+
+    nav.scrolled .nav-links a {
+      color: var(--navy);
+      opacity: 0.7;
+    }
+
+    nav.scrolled .nav-links a:hover {
+      opacity: 1;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 160px 48px 60px;
+      text-align: center;
+    }
+
+    .page-header .section-label {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue-grey);
+      margin-bottom: 24px;
+    }
+
+    .page-header h1 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 300;
+      color: var(--navy);
+      line-height: 1.2;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── ABOUT BODY ── */
+    .about-section {
+      padding: 40px 48px 120px;
+    }
+
+    .about-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .about-body {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--body-text);
+    }
+
+    .about-body p {
+      margin-bottom: 28px;
+    }
+
+    .about-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-deep);
+      padding: 32px 48px;
+      text-align: center;
+    }
+
+    footer p {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.28);
+    }
+
+    footer a {
+      color: rgba(255, 255, 255, 0.28);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* ── DESKTOP NAV ── */
+    @media (min-width: 769px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 20px 24px;
+      }
+
+      nav.scrolled {
+        padding: 14px 24px;
+      }
+
+      .nav-brand {
+        font-size: 15px;
+      }
+
+      body {
+        font-size: 16px;
+      }
+
+      .page-header {
+        padding: 130px 28px 40px;
+      }
+
+      .about-section {
+        padding: 20px 28px 80px;
+      }
+
+      footer {
+        padding: 28px 24px;
+      }
+    }
+
+    /* ── HAMBURGER / MOBILE MENU ── */
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.6);
+      padding: 10px 24px;
+      border-radius: 3px;
+      transition: background 0.25s, border-color 0.25s, color 0.25s;
+    }
+
+    .nav-cta:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: #fff;
+    }
+
+    nav.scrolled .nav-cta {
+      color: var(--navy);
+      border-color: var(--navy);
+    }
+
+    nav.scrolled .nav-cta:hover {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: rgba(255,255,255,0.85);
+      transition: background 0.3s, transform 0.3s, opacity 0.3s;
+    }
+    nav.scrolled .hamburger span {
+      background: var(--navy);
+    }
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+    .hamburger.open span {
+      background: #fff;
+    }
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: var(--navy);
+      z-index: 101;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .mobile-menu.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .mobile-menu a {
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .nav-cta {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAV ── -->
+  <nav id="main-nav">
+    <a href="/" class="nav-brand">Kenzie Morton Matchmaking</a>
+    <ul class="nav-links">
+      <li><a href="/#process">Process</a></li>
+      <li><a href="/apply">Application</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/#contact">Get in touch</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/apply" class="nav-cta">Apply</a>
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── PAGE HEADER ── -->
+  <div class="page-header">
+    <p class="section-label">Who I am</p>
+    <h1>About</h1>
+  </div>
+
+  <!-- ── ABOUT BODY ── -->
+  <section class="about-section">
+    <div class="about-inner">
+      <div class="about-body">
+        <p>I became a matchmaker because connecting people I care about and believe in is one of my greatest joys.</p>
+
+        <p>My philosophy has always been that there is no such thing as a bad date. Even the dates that do not lead to romance can teach us something: about our values, our desires, the kinds of connection that feel nourishing, and the ones that do not.</p>
+
+        <p>My work is rooted in something both intuitive and deeply relational: a genuine ability to connect with people, understand what makes them feel alive, notice where they get stuck, and sense where compatibility may exist. I have spent years supporting people's growth and unfolding in a healing and therapeutic context, and bringing that same depth of care to matchmaking feels both natural and deeply fulfilling.</p>
+
+        <p>My process is shaped by the belief that every date holds value. Of course, I want you to meet someone you feel excited to know more deeply. But this is also about your relationship with yourself: becoming clearer on what you want, what you are ready for, and what kind of partnership feels aligned. The better we understand you, your values, what lights you up, and the subtler things you may not yet have words for, the more precisely I can identify who might genuinely complement you.</p>
+
+        <p>This work feels meaningful to me because it is. I feel deeply grateful to do it. I get to work with kind, thoughtful, self-aware, open-hearted people who are ready for real connection.</p>
+
+        <p>If you are over the apps, over the performance, and ready for a more human way of connecting, I would be honored to steward that process.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p><a href="mailto:kenzie@kenziemorton.com">kenzie@kenziemorton.com</a></p>
+    <p>Based in Mexico City</p>
+    <p>&copy; 2026 Kenzie Morton Matchmaking</p>
+  </footer>
+
+  <!-- ── MOBILE MENU ── -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <a href="/#process">Process</a>
+    <a href="/apply">Application</a>
+    <a href="/about">About</a>
+    <a href="/#contact">Get in touch</a>
+  </div>
+
+  <!-- ── SCRIPTS ── -->
+  <script>
+    // Mobile hamburger menu
+    const hamburger = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open', isOpen);
+      mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Sticky nav scroll behavior
+    const nav = document.querySelector('nav');
+    const onScroll = () => {
+      if (window.scrollY > 60) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  </script>
+
+</body>
+</html>
