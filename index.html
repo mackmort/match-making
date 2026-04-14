@@ -322,6 +322,26 @@
       margin-bottom: 0;
     }
 
+    #about .about-more {
+      display: inline-block;
+      margin-top: 28px;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--earth);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(138, 90, 60, 0.35);
+      padding-bottom: 2px;
+      transition: border-color 0.25s, color 0.25s;
+    }
+
+    #about .about-more:hover {
+      color: var(--navy);
+      border-bottom-color: var(--navy);
+    }
+
     /* ── CONTACT ── */
     #contact {
       background: var(--navy);
@@ -622,7 +642,7 @@
     <ul class="nav-links">
       <li><a href="#process">Process</a></li>
       <li><a href="/apply">Application</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a href="/about">About</a></li>
       <li><a href="#contact">Get in touch</a></li>
     </ul>
     <div class="nav-right">
@@ -699,16 +719,13 @@
       <div class="about-body">
         <p>I became a matchmaker because connecting people I care about and believe in is one of my greatest joys.</p>
 
-        <p>My philosophy has always been that there is no such thing as a bad date. Even the dates that do not lead to romance can teach us something: about our values, our desires, the kinds of connection that feel nourishing, and the ones that do not.</p>
+        <p>I have spent five years working closely with people in a relational and therapeutic context, learning to see the ways we protect ourselves and how those patterns shape our ability to connect.</p>
 
-        <p>My work is rooted in something both intuitive and deeply relational: a genuine ability to connect with people, understand what makes them feel alive, notice where they get stuck, and sense where compatibility may exist. I have spent years supporting people's growth and unfolding in a healing and therapeutic context, and bringing that same depth of care to matchmaking feels both natural and deeply fulfilling.</p>
+        <p>Over time, I have developed a real ability to see people clearly, beyond those layers.</p>
 
-        <p>My process is shaped by the belief that every date holds value. Of course, I want you to meet someone you feel excited to know more deeply. But this is also about your relationship with yourself: becoming clearer on what you want, what you are ready for, and what kind of partnership feels aligned. The better we understand you, your values, what lights you up, and the subtler things you may not yet have words for, the more precisely I can identify who might genuinely complement you.</p>
-
-        <p>This work feels meaningful to me because it is. I feel deeply grateful to do it. I get to work with kind, thoughtful, self-aware, open-hearted people who are ready for real connection.</p>
-
-        <p>If you are over the apps, over the performance, and ready for a more human way of connecting, I would be honored to steward that process.</p>
+        <p>This work is an extension of that, rooted in genuine care for the people I work with.</p>
       </div>
+      <a href="/about" class="about-more">Learn more about Kenzie →</a>
     </div>
   </section>
 
@@ -733,7 +750,7 @@
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
     <a href="#process">Process</a>
     <a href="/apply">Application</a>
-    <a href="#about">About</a>
+    <a href="/about">About</a>
     <a href="#contact">Get in touch</a>
   </div>
 
