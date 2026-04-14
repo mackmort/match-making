@@ -1,5 +1,13 @@
 # Progress Log
 
+## 2026-04-14 — Add USD Labels & MXN Payment Note to Pricing
+
+### What Changed
+1. **Added "USD" after price amounts** — $150 and $500 in the Details section now read "$150 USD" and "$500 USD"
+2. **Added MXN note** — Small note below the pricing list: "Amounts to be paid in MXN at the current exchange rate"
+
+---
+
 ## 2026-04-14 — Add Testimonials to About Page
 
 ### What Changed
