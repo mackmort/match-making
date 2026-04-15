@@ -1,5 +1,14 @@
 # Progress Log
 
+## 2026-04-14 — Restructure Process Section with Step Headings
+
+### What Changed
+1. **Added step headings** — Process section now organized into four named steps: Introductory Call, Session, Three Introductions, Three De-Briefs. Headings use serif (Cormorant Garamond) navy at 24px.
+2. **Thin dividers between steps** — 1px blue-grey rule separates each step for clearer visual structure.
+3. **Rewrote body copy** — Updated language throughout; Session and Three Introductions each expanded to two paragraphs.
+
+---
+
 ## 2026-04-14 — Update Hero Copy
 
 ### What Changed

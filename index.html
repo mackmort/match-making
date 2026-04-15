@@ -261,6 +261,27 @@
       font-weight: 500;
     }
 
+    #process .process-step {
+      padding-top: 32px;
+      margin-top: 32px;
+      border-top: 1px solid var(--blue-grey);
+    }
+
+    #process .process-step:first-child {
+      padding-top: 0;
+      margin-top: 0;
+      border-top: 0;
+    }
+
+    #process .process-step-heading {
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--navy);
+      margin: 0 0 16px;
+      letter-spacing: 0.01em;
+    }
+
     /* ── DIVIDER ── */
     .section-divider {
       width: 48px;
@@ -677,15 +698,27 @@
       <p class="section-label">How it works</p>
       <h2 class="section-heading">Process</h2>
       <div class="process-body">
-        <p>We begin with a brief <strong>intro call</strong>, which gives me a sense of who you are and what you are looking for.</p>
+        <div class="process-step">
+          <h3 class="process-step-heading">Introductory Call</h3>
+          <p>We begin with a brief intro call, which gives me a sense of who you are and what you're looking for.</p>
+        </div>
 
-        <p>If it feels natural to move forward, we move into a longer <strong>initial session</strong>. This is a thoughtful, one-on-one space where I take the time to really understand you: how you relate, what you are looking for, and where you may find yourself navigating uncertainty or repeating certain patterns.</p>
+        <div class="process-step">
+          <h3 class="process-step-heading">Session</h3>
+          <p>If it feels natural to move forward, we meet for a longer initial session. This is a thoughtful, one-on-one space where I take the time to understand how you relate, what you're looking for, and where you may be navigating uncertainty or repeating certain patterns.</p>
+          <p>This conversation often brings clarity and a deeper sense of direction in your dating life. It's valuable in its own right, designed to help you refine what you're looking for and approach connection with more curiosity and self-awareness, whether or not we continue into matchmaking.</p>
+        </div>
 
-        <p>It is not simply an assessment, but a meaningful conversation that often brings clarity and a deeper sense of direction in your dating life.</p>
+        <div class="process-step">
+          <h3 class="process-step-heading">Three Introductions</h3>
+          <p>I then introduce you to a small number of people, each selected with intention and based on compatibility, shared values, and the nuances of what you're looking for.</p>
+          <p>I work within a carefully cultivated circle. Everyone I introduce has gone through the same process: a real conversation, honest reflection, and a willingness to show up openly. That shared foundation matters.</p>
+        </div>
 
-        <p>In itself, this session is valuable. It is designed to support you, refine what you are looking for, and help you approach connection with more curiosity and self-awareness, whether or not we continue into matchmaking.</p>
-
-        <p>I then introduce you to a small number of carefully chosen people. You will meet three individuals, and between each date we take time for a brief <strong>check-in</strong> to reflect on how it felt and what you are noticing. This keeps the process intentional and allows each introduction to become more aligned.</p>
+        <div class="process-step">
+          <h3 class="process-step-heading">Three De-Briefs</h3>
+          <p>Between each date, we take time to reflect on your experience and what you're noticing. These conversations help refine the process and guide the next introduction.</p>
+        </div>
       </div>
     </div>
   </section>
